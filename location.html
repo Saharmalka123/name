@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Open Map Link</title>
+</head>
+<body>
+
+<script>
+  function openMapLink() {
+    var latitude = 32.8230309;
+    var longitude = 34.9850989;
+    var link;
+
+    // Check if the device is iOS
+    if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
+      // Use the Apple Maps URL scheme
+      link = 'maps://?ll=' + latitude + ',' + longitude;
+    } else if (navigator.platform.indexOf('Android') !== -1) {
+      // Check if Waze is installed
+      if (typeof Android !== 'undefined' && typeof Android.openWaze !== 'undefined') {
+        // Use the Waze URL scheme
+        link = 'waze://?ll=' + latitude + ',' + longitude;
+      } else {
+        // Use the Google Maps URL
+        link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
+      }
+    } else {
+      // Use the Apple Maps URL scheme on other devices
+      link = 'maps://?ll=' + latitude + ',' + longitude;
+    }
+
+    // Open the link in a new tab
+    window.open(link, '_blank');
+  }
+
+  // Call the openMapLink function when the page loads
+  window.onload = openMapLink;
+</script>
+
+</body>
+</html>
