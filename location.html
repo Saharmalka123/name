@@ -14,7 +14,7 @@
     // Check if the device is iOS
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
-      link = 'waze://?ll=' + latitude + ',' + longitude;
+      link = 'maps://?ll=' + latitude + ',' + longitude;
   /*  } else if (navigator.platform.indexOf('Android') !== -1) {
       // Check if Waze is installed
       if (typeof Android !== 'undefined' && typeof Android.openWaze !== 'undefined') {
