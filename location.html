@@ -9,6 +9,8 @@
     var latitude = 32.8230309;
     var longitude = 34.9850989;
     var link;
+    var os = navigator.platform;
+    console.log(os);
     // Check if the device is iOS
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
