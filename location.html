@@ -11,7 +11,8 @@
     var link;
     var os = navigator.platform;
     console.log(os);
-    // Check if the device is iOS
+    /*
+     Check if the device is iOS
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
       link = 'maps://?ll=' + latitude + ',' + longitude;
@@ -24,11 +25,12 @@
         // Use the Google Maps URL
         link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
       }
-    } */else {
+    } else {
       // Use the Apple Maps URL scheme on other devices
       link = 'waze://?ll=' + latitude + ',' + longitude;
-    }
+    }*/
     // Open the link in a new tab
+    link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
     window.location = link;
   }
   // Call the openMapLink function when the page loads
