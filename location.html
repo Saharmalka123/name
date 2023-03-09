@@ -27,7 +27,7 @@
       link = 'maps://?ll=' + latitude + ',' + longitude;
     }
     // Open the link in a new tab
-    window.open(link, '_self');
+    window.location = link;
   }
   // Call the openMapLink function when the page loads
   window.onload = openMapLink;
