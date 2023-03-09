@@ -12,8 +12,13 @@
     var os = navigator.platform;
     
    if (os.indexOf('Android') !== -1){
-       link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;}
-    else
+     try{
+  const url = "https://waze.com/ul?q=Hawaii";
+  const intent = window.location.assign(url);
+} catch (error) {
+  // If Waze is not installed, open it in Google Play:
+  const intent = window.location.assign("market://details?id=com.waze");
+}    else
      window.location = 'maps://?ll=' + latitude + ',' + longitude;
   /*   Check if the device is iOSlink
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
