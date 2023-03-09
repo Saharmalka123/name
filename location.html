@@ -30,7 +30,11 @@
     }
 
     // Open the link in a new tab
-    window.open(link, '_self');
+    var window1 = window.open(link, '_self');
+    window1.focus();
+    
+    setTimeout(function(){
+    window1.close();}, 100);
   }
 
   // Call the openMapLink function when the page loads
