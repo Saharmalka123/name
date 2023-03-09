@@ -11,13 +11,13 @@
     var link;
     var os = navigator.platform;
     
-   if (os.indexOf('Android') !== -1){
-     try{
-  const url = "https://waze.com/ul?q=Hawaii";
-  const intent = window.location.assign(url);
-} catch (error) {
+  if (os.indexOf('Android') !== -1){
+    try{
+      const url = 'https://www.waze.com/ul?ll='+ latitude + '%2C' + longitude ; 
+      const intent = window.location.assign(url);
+      } catch (error) {
   // If Waze is not installed, open it in Google Play:
-  const intent = window.location.assign("market://details?id=com.waze");
+        const intent = window.location.assign("market://details?id=com.waze");
 }    else
      window.location = 'maps://?ll=' + latitude + ',' + longitude;
   /*   Check if the device is iOSlink
