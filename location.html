@@ -13,7 +13,9 @@
     
    if (os.indexOf('Win32') !== -1){
        link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;}
-  /*   Check if the device is iOS
+    else
+      link = 'maps://?ll=' + latitude + ',' + longitude;
+  /*   Check if the device is iOSlink
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
       link = 'maps://?ll=' + latitude + ',' + longitude;
