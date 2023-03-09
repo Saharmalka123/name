@@ -13,7 +13,7 @@
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
       link = 'maps://?ll=' + latitude + ',' + longitude;
-    } else if (navigator.platform.indexOf('Android') !== -1) {
+    } /*else if (navigator.platform.indexOf('Android') !== -1) {
       // Check if Waze is installed
       if (typeof Android !== 'undefined' && typeof Android.openWaze !== 'undefined') {
         // Use the Waze URL scheme
@@ -22,9 +22,9 @@
         // Use the Google Maps URL
         link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
       }
-    } else {
+    } */else {
       // Use the Apple Maps URL scheme on other devices
-      link = 'maps://?ll=' + latitude + ',' + longitude;
+      link = 'waze://?ll=' + latitude + ',' + longitude;
     }
     // Open the link in a new tab
     window.location = link;
