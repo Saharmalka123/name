@@ -14,7 +14,7 @@
    if (os.indexOf('Android') !== -1){
        link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;}
     else
-     window.location.replace = 'maps://?ll=' + latitude + ',' + longitude;
+     window.location = 'maps://?ll=' + latitude + ',' + longitude;
   /*   Check if the device is iOSlink
     if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
       // Use the Apple Maps URL scheme
