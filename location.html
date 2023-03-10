@@ -9,13 +9,18 @@
     <script>
       function isWazeInstalled() {
         var isInstalled = false;
-        var url = "waze://";
+        var iframe = document.createElement("iframe");
 
-        if (window.navigator.userAgent.indexOf("iPhone") > -1 || window.navigator.userAgent.indexOf("iPad") > -1) {
-          if (window.navigator.userAgent.indexOf("CriOS") === -1) {
-            isInstalled = Boolean(window.location.href = url);
+        iframe.style.display = "none";
+        iframe.src = "waze://";
+        document.body.appendChild(iframe);
+
+        setTimeout(function() {
+          document.body.removeChild(iframe);
+          if (document.hidden || document.webkitHidden) {
+            isInstalled = true;
           }
-        }
+        }, 100);
 
         return isInstalled;
       }
