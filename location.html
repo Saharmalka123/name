@@ -1,48 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Auto Open Map Link</title>
-</head>
-<body>
-<script>
-  function openMapLink() {
-    var latitude = 32.8230309;
-    var longitude = 34.9850989;
-    var link;
-    var os = navigator.platform;
-    
-  if (os.indexOf('Android') !== -1){
-    try{
-      const url = 'https://www.waze.com/ul?ll='+ latitude + '%2C' + longitude ; 
-      const intent = window.location.assign(url);
-      } catch (error) {
-  // If Waze is not installed, open it in Google Play:
-        const intent = window.location.assign("market://details?id=com.waze");
-}    else
-     window.location = 'maps://?ll=' + latitude + ',' + longitude;
-  /*   Check if the device is iOSlink
-    if (navigator.platform.indexOf('iPhone') !== -1 || navigator.platform.indexOf('iPad') !== -1 || navigator.platform.indexOf('iPod') !== -1) {
-      // Use the Apple Maps URL scheme
-      link = 'maps://?ll=' + latitude + ',' + longitude;
-    } /*else if (navigator.platform.indexOf('Android') !== -1) {
-      // Check if Waze is installed
-      if (typeof Android !== 'undefined' && typeof Android.openWaze !== 'undefined') {
-        // Use the Waze URL scheme
-        link = 'waze://?ll=' + latitude + ',' + longitude;
-      } else {
-        // Use the Google Maps URL
-        link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
+  <head>
+    <title>Check if Waze is installed on iOS</title>
+  </head>
+  <body>
+    <p id="waze-message"></p>
+
+    <script>
+      function isWazeInstalled() {
+        var isInstalled = false;
+        var url = "waze://";
+
+        if (window.navigator.userAgent.indexOf("iPhone") > -1 || window.navigator.userAgent.indexOf("iPad") > -1) {
+          if (window.navigator.userAgent.indexOf("CriOS") === -1) {
+            isInstalled = Boolean(window.location.href = url);
+          }
+        }
+
+        return isInstalled;
       }
-    } else {
-      // Use the Apple Maps URL scheme on other devices
-      link = 'waze://?ll=' + latitude + ',' + longitude;
-    }*/
-    // Open the link in a new tab
-   // link = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
-    window.location.replace= link;
-  }
-  // Call the openMapLink function when the page loads
-  window.onload = openMapLink;
-</script>
-</body>
+
+      if (isWazeInstalled()) {
+        document.getElementById("waze-message").textContent = "Waze is installed on your device.";
+      } else {
+        document.getElementById("waze-message").textContent = "Waze is not installed on your device.";
+      }
+    </script>
+  </body>
 </html>
