@@ -2,34 +2,36 @@
 <html>
   <head>
     <title>Check if Waze is installed on iOS</title>
+    <script>
+      function isWazeInstalled() {
+        if (navigator.registerProtocolHandler) {
+          navigator.registerProtocolHandler(
+            "waze",
+            "https://www.waze.com/?ll=37.7749,-122.4194&navigate=yes",
+            "Waze"
+          );
+
+          setTimeout(function () {
+            window.location.href = "waze://";
+          }, 500);
+
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      window.onload = function () {
+        var message = document.getElementById("waze-message");
+        if (isWazeInstalled()) {
+          message.innerHTML = "Waze is installed on your device.";
+        } else {
+          message.innerHTML = "Waze is not installed on your device.";
+        }
+      };
+    </script>
   </head>
   <body>
     <p id="waze-message"></p>
-
-    <script>
-      function isWazeInstalled() {
-        var isInstalled = false;
-        var iframe = document.createElement("iframe");
-
-        iframe.style.display = "none";
-        iframe.src = "waze://";
-        document.body.appendChild(iframe);
-
-        setTimeout(function() {
-          document.body.removeChild(iframe);
-          if (document.hidden || document.webkitHidden) {
-            isInstalled = true;
-          }
-        }, 100);
-
-        return isInstalled;
-      }
-
-      if (isWazeInstalled()) {
-        document.getElementById("waze-message").textContent = "Waze is installed on your device.";
-      } else {
-        document.getElementById("waze-message").textContent = "Waze is not installed on your device.";
-      }
-    </script>
   </body>
 </html>
