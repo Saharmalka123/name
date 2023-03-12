@@ -2,7 +2,7 @@
 <html>
   <head>
     <script>
-      var isWazeInstalled = false;
+     // var isWazeInstalled = false;
       function isWazeInstalled() {
         if (navigator.registerProtocolHandler) {
           navigator.registerProtocolHandler(
@@ -20,7 +20,7 @@
           return false;
         }
       }
-      isWazeinstalled = isWazeInstalled();
+      //isWazeinstalled = isWazeInstalled();
       
       window.onload = function () {
         var message = document.getElementById("waze-message");
