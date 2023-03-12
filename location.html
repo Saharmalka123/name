@@ -24,7 +24,7 @@
       
       window.onload = function () {
         var message = document.getElementById("waze-message");
-        if (isWazeInstalled()) {
+        if (isWaze) {
           message.innerHTML = "Waze is installed on your device.";
         } else {
           message.innerHTML = "Waze is not installed on your device.";
